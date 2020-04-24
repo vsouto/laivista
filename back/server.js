@@ -2,7 +2,9 @@ const express = require('express'),
   app = express(),
   cors = require('cors'),
   mongoose = require('mongoose'),
-  Entry = require('./api/models/blogEntryModel'),
+  User = require('./api/models/userModel'),
+  Artist = require('./api/models/artistModel'),
+  Live = require('./api/models/LiveModel'),
   bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
@@ -12,11 +14,14 @@ app.use(cors()); //enable cors on all requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const blogRoutes = require('./api/routes/blogRoutes');
-blogRoutes(app);
+const artistRoutes = require('./api/routes/artistRoutes');
+artistRoutes(app);
 
-const homeRoutes = require('./api/routes/homeRoutes');
-homeRoutes(app);
+const userRoutes = require('./api/routes/userRoutes');
+userRoutes(app);
+
+const liveRoutes = require('./api/routes/liveRoutes');
+liveRoutes(app);
 
 const port = process.env.PORT || 3000;
 app.listen(port);

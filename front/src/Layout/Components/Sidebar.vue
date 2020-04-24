@@ -1,5 +1,7 @@
 <template>
-    <div class="app-sidebar sidebar-shadow" @mouseover="toggleSidebarHover('add','closed-sidebar-open')" @mouseleave="toggleSidebarHover('remove','closed-sidebar-open')">
+    <div class="app-sidebar sidebar-shadow"
+         @mouseover="toggleSidebarHover('add','closed-sidebar-open')"
+         @mouseleave="toggleSidebarHover('remove','closed-sidebar-open')">
         <div class="app-header__logo">
             <div class="logo-src"/>
             <div class="header__pane ml-auto">
@@ -11,11 +13,107 @@
             </div>
         </div>
         <div class="app-sidebar-content">
-            <VuePerfectScrollbar class="app-sidebar-scroll" v-once>
-                <sidebar-menu showOneChild :menu="menu"/>
-            </VuePerfectScrollbar>
+          <div class="app-sidebar-content">
+            <section class="ps-container app-sidebar-scroll ps ps--theme_default ps--active-y"
+                     data-ps-id="77d6acbd-3e24-0607-0cd8-cb30ee259a98">
+              <div class="v-sidebar-menu vsm-default" style="width: 350px;">
+                <div class="vsm-list">
+                  <div class="vsm-header">
+                    Main Navigation
+                  </div>
+                  <div class="vsm-item first-item open-item parent-active-item"><a href="#" class="vsm-link"><i
+                    class="vsm-icon pe-7s-rocket"></i> <!----> <span class="vsm-title">Dashboards</span> <i
+                    class="vsm-arrow open-arrow"></i></a>
+                    <div class="vsm-dropdown">
+                      <div class="vsm-list">
+                        <div class="vsm-item active-item"><a href="#/"
+                                                             class="vsm-link router-link-exact-active router-link-active"><!---->
+                          <!----> <span class="vsm-title">Analytics</span> <!----></a> <!----></div>
+                        <div class="vsm-item"><a href="#/dashboards/advertisement" class="vsm-link"><!----> <!----> <span
+                          class="vsm-title">Advertisement</span> <!----></a> <!----></div>
+                        <div class="vsm-item"><a href="#/dashboards/management" class="vsm-link"><!----> <!----> <span
+                          class="vsm-title">Management</span> <!----></a> <!----></div>
+                        <div class="vsm-item"><a href="#/dashboards/helpdesk" class="vsm-link"><!----> <!----> <span
+                          class="vsm-title">Helpdesk</span> <!----></a> <!----></div>
+                        <div class="vsm-item"><a href="#/dashboards/monitoring" class="vsm-link"><!----> <!----> <span
+                          class="vsm-title">Monitoring</span> <!----></a> <!----></div>
+                        <div class="vsm-item"><a href="#/dashboards/crypto" class="vsm-link"><!----> <!----> <span
+                          class="vsm-title">Crypto</span> <!----></a> <!----></div>
+                        <div class="vsm-item"><a href="#/dashboards/project-management" class="vsm-link"><!----> <!----> <span
+                          class="vsm-title">Project Management</span> <!----></a> <!----></div>
+                        <div class="vsm-item"><a href="#/dashboards/product" class="vsm-link"><!----> <!----> <span
+                          class="vsm-title">Product</span> <!----></a> <!----></div>
+                        <div class="vsm-item"><a href="#/dashboards/statistics" class="vsm-link"><!----> <!----> <span
+                          class="vsm-title">Statistics</span> <!----></a> <!----></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-browser"></i> <!---->
+                    <span class="vsm-title">Pages</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-plugin"></i> <!---->
+                    <span class="vsm-title">Applications</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-header">
+                    UI Components
+                  </div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-diamond"></i> <!---->
+                    <span class="vsm-title">Elements</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-car"></i> <!----> <span
+                    class="vsm-title">Components</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-display2"></i> <!---->
+                    <span class="vsm-title">Tables</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-header">
+                    Material Components
+                  </div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-diamond"></i> <!---->
+                    <span class="vsm-title">Form Controls</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-diamond"></i> <!---->
+                    <span class="vsm-title">Navigation</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-diamond"></i> <!---->
+                    <span class="vsm-title">Layout</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-diamond"></i> <!---->
+                    <span class="vsm-title">Buttons &amp; Indicators</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-diamond"></i> <!---->
+                    <span class="vsm-title">Popups &amp; Modals</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-diamond"></i> <!---->
+                    <span class="vsm-title">Components</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-header">
+                    Dashboard Boxes
+                  </div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-graph2"></i> <!---->
+                    <span class="vsm-title">Chart Boxes</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#/widgets/profile-boxes" class="vsm-link"><i
+                    class="vsm-icon pe-7s-id"></i> <!----> <span class="vsm-title">Profile Boxes</span> <!----></a> <!----></div>
+                  <div class="vsm-header">
+                    Forms
+                  </div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-light"></i> <!----> <span
+                    class="vsm-title">Elements</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-joy"></i> <!----> <span
+                    class="vsm-title">Widgets</span> <i class="vsm-arrow"></i></a> <!----></div>
+                  <div class="vsm-header">
+                    Charts
+                  </div>
+                  <div class="vsm-item first-item"><a href="#/charts/chartjs" class="vsm-link"><i
+                    class="vsm-icon pe-7s-graph2"></i> <!----> <span class="vsm-title">ChartJS</span> <!----></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#/charts/apexcharts" class="vsm-link"><i
+                    class="vsm-icon pe-7s-graph"></i> <!----> <span class="vsm-title">Apex Charts</span> <!----></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#/charts/gauges" class="vsm-link"><i class="vsm-icon pe-7s-gleam"></i>
+                    <!----> <span class="vsm-title">Gauges</span> <!----></a> <!----></div>
+                  <div class="vsm-item first-item"><a href="#/charts/sparklines" class="vsm-link"><i
+                    class="vsm-icon pe-7s-graph1"></i> <!----> <span class="vsm-title">Chart Sparklines</span> <!----></a> <!---->
+                  </div>
+                </div> <!---->
+                <button class="collapse-btn"></button>
+              </div>
+              <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                <div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__scrollbar-y-rail" style="top: 0px; height: 887px; right: 0px;">
+                <div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 611px;"></div>
+              </div>
+            </section>
+          </div>
         </div>
-
     </div>
 </template>
 
@@ -32,7 +130,6 @@
             return {
                 isOpen: false,
                 sidebarActive: false,
-
                 menu: [
                     {
                         header: true,

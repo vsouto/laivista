@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="text-center text-white opacity-8 mt-3">
-                        Copyright &copy; ArchitectUI 2019
+                        Copyright &copy; Laivista 2020
                     </div>
                 </b-col>
             </div>
