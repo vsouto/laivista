@@ -13,11 +13,27 @@
 
 <script>
 
+
 import LivesList from "@/components/LivesList";
 export default {
   name: 'Home',
   components: {
     LivesList
   },
+  mounted() {
+    console.log('mounting'); //eslint-disable-line
+    var barray = ['a', 'b', 'c'];
+
+    var carray = ['a', 'b', 'c'].map(x => x.toUpperCase());
+
+    /*
+    var ae = barray.reduce((acc, x) => {
+      console.log('x is ', x); //eslint-disable-line
+      console.log('acc', acc); //eslint-disable-line
+      return       x.concat(x.toUpperCase())
+    })*/
+
+    console.log('carray', carray); //eslint-disable-line
+  }
 };
 </script>
