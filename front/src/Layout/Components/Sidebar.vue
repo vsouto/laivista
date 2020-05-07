@@ -21,16 +21,21 @@
                      data-ps-id="77d6acbd-3e24-0607-0cd8-cb30ee259a98">
               <div class="v-sidebar-menu vsm-default" style="width: 350px;">
                 <div class="vsm-list">
-                  <div class="vsm-item first-item open-item parent-active-item"><a href="#" class="vsm-link"><i
-                    class="vsm-icon pe-7s-rocket"></i>  <span class="vsm-title">Lives</span> <i
-                    class="vsm-arrow open-arrow"></i></a>
+                  <div class="vsm-item first-item open-item parent-active-item">
+                    <a href="#" class="vsm-link">
+                      <i class="vsm-icon pe-7s-micro"></i>
+                      <span class="vsm-title">Lives</span>
+                    </a>
+                  </div>
+                  <!-- Categories -->
+                  <div class="vsm-item first-item open-item parent-active-item">
+                    <a href="#" class="vsm-link">
+                      <i class="vsm-icon pe-7s-like"></i>
+                      <span class="vsm-title">Categorias</span>
+                      <i class="vsm-arrow open-arrow"></i>
+                    </a>
                     <div class="vsm-dropdown">
                       <div class="vsm-list">
-                        <div class="vsm-item active-item">
-                          <a href="#/" class="vsm-link router-link-exact-active router-link-active">
-                            <span class="vsm-title">Lista de Lives</span>
-                          </a>
-                        </div>
                         <div class="vsm-item"><a href="#/dashboards/advertisement" class="vsm-link">
                           <span class="vsm-title">Sertanejo</span>
                         </a>
@@ -38,10 +43,6 @@
                         <div class="vsm-item"><a href="#/dashboards/management" class="vsm-link">
                            <span
                           class="vsm-title">Rock</span> </a>
-                        </div>
-                        <div class="vsm-item"><a href="#/dashboards/helpdesk" class="vsm-link">
-                           <span
-                          class="vsm-title">MPB</span> </a>
                         </div>
                         <div class="vsm-item"><a href="#/dashboards/monitoring" class="vsm-link">
                            <span
@@ -53,16 +54,13 @@
                               class="vsm-title">Jogos / Streamers</span>
                           </a>
                         </div>
-                        <div class="vsm-item"><a href="#/dashboards/monitoring" class="vsm-link">
-                           <span
-                          class="vsm-title">Todas categorias</span> </a>
-                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-browser"></i>
+                  <!-- Artists -->
+                  <!--<div class="vsm-item first-item"><a href="#" class="vsm-link"><i class="vsm-icon pe-7s-browser"></i>
                     <span class="vsm-title">Artistas</span> <i class="vsm-arrow"></i></a>
-                  </div>
+                  </div>-->
                 </div>
                 <button class="collapse-btn"></button>
               </div>

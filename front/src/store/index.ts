@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import lives from "@/store/modules/live"
+
 /*
 import account from "@/store/modules/account"
-import live from "@/store/modules/live"
 import artist from "@/store/modules/artist"
 */
 
@@ -17,8 +18,6 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    /*account,
-    live,
-    artist*/
+    lives
   },
 });

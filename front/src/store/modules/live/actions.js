@@ -1,78 +1,53 @@
-import * as Sentry from "@sentry/browser"
+import LaivistaService from "@/services/LaivistaService"
 
-import { auth0 as auth0Config } from "@/config"
-import * as AccountService from "@/services/AccountService"
-import * as ReaperService from "@/services/ReaperService"
-import * as auth0 from "@/services/Auth0"
-
-export const register = () => {
-  auth0.authorize({
-    "initialScreen": "signUp"
-  })
-}
-
-export const login = ({ commit }, redirectPath="/") => {
-  commit("SET_REDIRECT_PATH", redirectPath)
-  auth0.authorize({
-    audience: "api.painel.com.br"
-  })
-}
-
-export const logout = () => {
-  window.localStorage.clear()
-  auth0.logout({
-    returnTo: auth0Config.returnTo
-  })
-}
-
-export const fetchUser = ({
+export const fetchLives = ({
   commit, dispatch, rootState
 }) => {
-  const fetchAttr = "user"
-  if (!rootState.fetch_control[fetchAttr]) {
-    commit("SET_FETCHING", fetchAttr, { root: true })
-    return AccountService.getUser()
-      .then(res => {
-        commit("setUser", res.data)
-        commit("SET_FETCHED", fetchAttr, { root: true })
-        commit("SET_SENTRY_CONTEXT", res.data)
+
+  console.log('fetching lives'); //eslint-disable-line
+
+  const fetchAttr = "lives"
+
+  return LaivistaService.getLives()
+    .then(resposta_da_lulu => {
+
+      console.log('resposta_da_lulu is ', resposta_da_lulu.data); //eslint-disable-line
+      commit("setLives", resposta_da_lulu.data)
+    })
+    .catch((error) => {
+      dispatch("error", { fetchAttr, error }, {
+        root: true
       })
-      .catch((error) => {
-        dispatch("error", { fetchAttr, error }, {
-          root: true
-        })
-      })
-  }
+    })
 }
 
-
 /**
- * Updates user infos in Auth0
+ * Updates live infos in Auth0
  *
  * @param undefined
  * @param app_metadata
  * @returns {Promise<boolean>}
  */
-export const updateUser = (undefined, app_metadata ) => {
+export const updateLive = (undefined, app_metadata ) => {
 
-  return ReaperService.updateUser(app_metadata)
+  return ReaperService.updateLive(app_metadata)
     .then(() => {
       return true
     })
 }
 
 /**
- * update user_metadata fields on Auth0
+ * update live_metadata fields on Auth0
  *
  * @param commit
  * @param fields
  * @returns {Promise<boolean>}
  */
-export const updateUsermetadata = ({commit}, fields ) => {
+export const updateLivemetadata = ({commit}, fields ) => {
 
-  return ReaperService.updateUsermetadata(fields)
+  return ReaperService.updateLivemetadata(fields)
     .then(() => {
-      commit("setUserNames", fields)
+      commit("setLiveNames", fields)
       return true
     })
 }
@@ -112,12 +87,12 @@ export const getPlans = ({
     .then(res => {
 
       if (res.data && res.data.data)
-        commit("SET_USER_PLANS", res.data.data)
+        commit("SET_LIVE_PLANS", res.data.data)
     })
 }
 
 /***
- * User changes its own password on Auth0
+ * Live changes its own password on Auth0
  *
  * @param undefined
  * @param password
@@ -139,50 +114,50 @@ export const handleAuthentication = ({
     const idTokenExpires = authResult.idTokenPayload && authResult.idTokenPayload.exp
     const expiresAt = idTokenExpires && idTokenExpires * 1000 || authResult.expiresIn && authResult.expiresIn * 1000 + Date.now() || Date.now() + 3600
     const accessToken = authResult.accessToken
-    const user = authResult.user
+    const live = authResult.live
 
-    user.app_metadata = user[`https://${auth0Config.domain}/app_metadata`] || {}
+    live.app_metadata = live[`https://${auth0Config.domain}/app_metadata`] || {}
     const permissions = authResult.scope
-    delete user[`https://${auth0Config.domain}/app_metadata`]
+    delete live[`https://${auth0Config.domain}/app_metadata`]
 
-    user.user_metadata = user[`https://${auth0Config.domain}/user_metadata`] || {}
-    delete user[`https://${auth0Config.domain}/user_metadata`]
+    live.live_metadata = live[`https://${auth0Config.domain}/live_metadata`] || {}
+    delete live[`https://${auth0Config.domain}/live_metadata`]
 
-    user.created_at = user[`https://${auth0Config.domain}/created_at`]
+    live.created_at = live[`https://${auth0Config.domain}/created_at`]
 
-    user.firstname = user.user_metadata.firstname || user.given_name || user.email
-    user.lastname = user.user_metadata.lastname || user.family_name || ""
-    user.phone = user.user_metadata.phone
+    live.firstname = live.live_metadata.firstname || live.given_name || live.email
+    live.lastname = live.live_metadata.lastname || live.family_name || ""
+    live.phone = live.live_metadata.phone
 
-    const plan = user.app_metadata.plan
+    const plan = live.app_metadata.plan
 
-    // Update user infos and plan through Reaper
-    dispatch("loginService", user.email)
+    // Update live infos and plan through Reaper
+    dispatch("loginService", live.email)
 
-    // Also get all user plans from Pipedrive
+    // Also get all live plans from Pipedrive
     dispatch("getPlans")
 
-    // Giving user context to error tracking
+    // Giving live context to error tracking
     Sentry.configureScope((scope) => {
       scope.setTag("permissions", permissions)
       if (plan) {
         for (const k in plan)
           scope.setTag(`plan_${k}`, plan[k].toString())
       }
-      scope.setUser({
-        id: user.sub,
-        email: user.email
+      scope.setLive({
+        id: live.sub,
+        email: live.email
       })
     })
 
     commit("setAuthResult", {
       expiresAt,
       accessToken,
-      user,
+      live,
       scope: permissions
     })
-    commit("SET_FETCHED", "user", { root: true })
-    dispatch("setUserDataLayer")
+    commit("SET_FETCHED", "live", { root: true })
+    dispatch("setLiveDataLayer")
   }).catch((error) => {
     Sentry.captureException(error)
     return dispatch("logout")
@@ -210,19 +185,19 @@ export const refreshExpiredToken = ({
 }
 
 
-export const setUserDataLayer = ({
+export const setLiveDataLayer = ({
   getters
 }) => {
-  let user = getters["user"]
-  if (user && user.email) {
+  let live = getters["live"]
+  if (live && live.email) {
     window.dataLayer = window.dataLayer || []
     window.dataLayer.push({
-      "event": "userLoaded",
-      "userCreatedAt": user.created_at,
-      "userFirstname": user.firstname,
-      "userLastname": user.lastname,
-      "userEmail": user.email,
-      "userId": user.sub
+      "event": "liveLoaded",
+      "liveCreatedAt": live.created_at,
+      "liveFirstname": live.firstname,
+      "liveLastname": live.lastname,
+      "liveEmail": live.email,
+      "liveId": live.sub
     })
   }
 }

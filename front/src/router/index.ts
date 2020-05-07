@@ -2,14 +2,20 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
 
+/** Route Guards **/
+import RouteGuard from "@/utils/route-guard"
+import { fetchLives } from "./guards/fetch-lives"
+
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
-
   {
     path: '/',
     name: 'Home',
     component: Home,
+    beforeEnter: RouteGuard([
+      fetchLives
+    ]),
   },
   {
     path: '/about',
@@ -19,17 +25,13 @@ const routes: Array<RouteConfig> = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
-
   // Dashboards
-
   {
     path: '/',
     name: 'analytics',
     component: () => import('../DemoPages/Dashboards/Analytics.vue'),
   },
-
   // Pages
-
   {
     path: '/pages/login-boxed',
     name: 'login-boxed',
@@ -142,17 +144,13 @@ const routes: Array<RouteConfig> = [
     name: 'regular-tables',
     component: () => import('../DemoPages/Tables/RegularTables.vue'),
   },
-
   // Dashboard Widgets
-
   {
     path: '/widgets/chart-boxes-3',
     name: 'chart-boxes-3',
     component: () => import('../DemoPages/Widgets/ChartBoxes3.vue'),
   },
-
   // Forms
-
   {
     path: '/forms/controls',
     name: 'controls',
@@ -164,7 +162,6 @@ const routes: Array<RouteConfig> = [
     component: () => import('../DemoPages/Forms/Elements/Layouts.vue'),
   },
   // Charts
-
   {
     path: '/charts/chartjs',
     name: 'chartjs',
