@@ -45,3 +45,40 @@ exports.delete = function(req, res) {
         res.json({ message: 'Live successfully deleted' });
     });
 };
+
+
+exports.seed = function(req, res) {
+    var faker = require('faker');
+
+    //const statusOptions = require('../models/liveModel')
+    const statusOptions = ['pending', 'active', 'archived']
+    const categoriesOptions = ['sertanejo', 'mpb', 'rock', 'games', 'fitness']
+    const tagsOptions = ['samba', 'araketu', 'hot', 'nudes', 'kids']
+
+    for(let i=0; i<= 10; i++) {
+        var new_live = new Live({
+            //_id: mongoose.Types.ObjectId(),
+            title: faker.name.findName(),
+            artist_id: faker.random.number(),
+            link: faker.random.url,
+            categories: faker.random.arrayElement(categoriesOptions),
+            tags: faker.random.arrayElement(tagsOptions),
+            highlight: faker.random.boolean(),
+            beneficent: faker.random.boolean(),
+            international: faker.random.boolean(),
+            eventDate: faker.date.future(),
+            status: faker.random.arrayElement(statusOptions),
+        });
+        new_live.save(function(err, live) {
+
+            // TODO: agregate the errors
+            if (err)
+                res.send(err);
+            //res.json(live);
+        });
+    }
+
+    res.json('success');
+
+
+};

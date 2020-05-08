@@ -2,6 +2,10 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
+const statusOptions = ['pending', 'active', 'archived']
+exports.statusOptions = statusOptions
+
 const LiveModelSchema = new Schema({
     title: {
         type: String,
@@ -47,7 +51,7 @@ const LiveModelSchema = new Schema({
     status: {
         type: [{
           type: String,
-          enum: ['pending', 'active', 'archived']
+          enum: statusOptions
         }],
         default: ['pending']
     }

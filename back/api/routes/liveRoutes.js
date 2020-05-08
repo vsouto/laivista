@@ -8,4 +8,5 @@ module.exports = function(app) {
     .get(live.read)
     .put(live.update)
     .delete(live.delete);
+  app.route('/seed/live').get(live.seed)
 };
