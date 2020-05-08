@@ -3,10 +3,10 @@
          @mouseover="toggleSidebarHover('add','closed-sidebar-open')"
          @mouseleave="toggleSidebarHover('remove','closed-sidebar-open')">
         <div class="app-header__logo">
-            <!--<div class="logo-src"/>-->
-            <div>
+            <div class="header-logo logo-src"/>
+            <!--<div>
               <img src="@/assets/images/laivista/logo.png" class="header-logo">
-            </div>
+            </div>-->
             <div class="header__pane ml-auto">
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" v-bind:class="{ 'is-active' : isOpen }" @click="toggleBodyClass('closed-sidebar')">
                     <span class="hamburger-box">
@@ -318,6 +318,7 @@
 
 <style>
   .header-logo{
-    width: 160px;
+    width: 100%;
+    height: 100%;
   }
 </style>

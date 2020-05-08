@@ -4,14 +4,11 @@ export const fetchLives = ({
   commit, dispatch, rootState
 }) => {
 
-  console.log('fetching lives'); //eslint-disable-line
-
   const fetchAttr = "lives"
 
   return LaivistaService.getLives()
     .then(resposta_da_lulu => {
 
-      console.log('resposta_da_lulu is ', resposta_da_lulu.data); //eslint-disable-line
       commit("setLives", resposta_da_lulu.data)
     })
     .catch((error) => {

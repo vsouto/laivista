@@ -4,6 +4,5 @@ import Vue from "vue"
 
 
 export const getLives = (state) => {
-  console.log('getting lives from state ', state); //eslint-disable-line
   return state.lives
 }

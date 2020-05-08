@@ -211,6 +211,9 @@
   .app-header.text-lighter {
     .logo-src {
       background: url('./assets/images/laivista/logo.png');
+      background-position: -20% 40%;
+      background-size: 64%;
+      background-repeat: no-repeat;
     }
 
     .app-header__menu {
