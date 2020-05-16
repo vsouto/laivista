@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose'),
-  Artist = mongoose.model('ArtistModel');
+  Artist = mongoose.model('Artist');
 
 exports.listAll = function(req, res) {
     Artist.find({}, function(err, artist) {
@@ -13,7 +13,7 @@ exports.listAll = function(req, res) {
 
 exports.create = function(req, res) {
     var new_artist = new Artist(req.body);
-    new_artist.save(function(err, artist) {
+    new_artist.submit(function(err, artist) {
         if (err)
             res.send(err);
         res.json(artist);

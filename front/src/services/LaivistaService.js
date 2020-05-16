@@ -12,6 +12,10 @@ export default {
     return http.get(LIVES.LIVE(id))
   },
 
+  createLive(live) {
+    return http.post(LIVES.LIVES, live.dump())
+  },
+
   /**
    * USERS
    */

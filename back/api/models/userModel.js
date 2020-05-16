@@ -22,4 +22,4 @@ const UserModelSchema = new Schema({
     favoriteArtists: []
 });
 
-module.exports = mongoose.model('UserModel', UserModelSchema);
+module.exports = mongoose.model('User', UserModelSchema);

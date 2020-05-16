@@ -221,7 +221,7 @@
         }, 300)
       },
 
-      save () {
+      submit () {
         if (this.editedIndex > -1) {
           Object.assign(this.desserts[this.editedIndex], this.editedItem)
         } else {

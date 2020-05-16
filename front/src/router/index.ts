@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import Home from '../views/Home.vue';
+import LiveCreate from '../views/Lives/LiveCreate.vue';
 
 /** Route Guards **/
 import RouteGuard from "@/utils/route-guard"
 import { fetchLives } from "./guards/fetch-lives"
+import { fetchArtists } from "./guards/fetch-artists"
 
 Vue.use(VueRouter);
 
@@ -15,6 +17,14 @@ const routes: Array<RouteConfig> = [
     component: Home,
     beforeEnter: RouteGuard([
       fetchLives
+    ]),
+  },
+  {
+    path: '/live/create',
+    name: 'LiveCreate',
+    component: LiveCreate,
+    beforeEnter: RouteGuard([
+      fetchArtists
     ]),
   },
   {

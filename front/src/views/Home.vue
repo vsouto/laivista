@@ -24,7 +24,11 @@
                     class=""></path>
             </svg>
           </button>-->
-          <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-success">
+          <button
+            type="button"
+            class="btn-shadow d-inline-flex align-items-center btn btn-success"
+            @click="goToLiveForm()"
+          >
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                  class="mr-2 svg-inline--fa fa-plus fa-w-14">
@@ -38,17 +42,25 @@
       </div>
     </div>
     <lives-list />
+    <lives-info />
   </div>
 </template>
 
 <script>
 
 import LivesList from "@/views/Lives/LivesList";
+import LivesInfo from "@/views/Lives/LivesInfo";
 
 export default {
   name: 'Home',
   components: {
+    LivesInfo,
     LivesList
+  },
+  methods: {
+    goToLiveForm() {
+      this.$router.push({name:"LiveCreate"})
+    }
   }
 };
 </script>

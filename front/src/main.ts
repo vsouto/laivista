@@ -8,8 +8,16 @@ import BootstrapVue from "bootstrap-vue"
 import Default from './Layout/Wrappers/baseLayout.vue';
 import Pages from './Layout/Wrappers/pagesLayout.vue';
 
+// Notifications plugin. Used on Notifications page
+import Notifications from 'vue-notification'
+//import Notifications from "src/plugins/NotificationPlugin"
+Vue.use(Notifications)
+
 // @ts-ignore
 import vuetify from '@/plugins/vuetify' // path to vuetify export
+
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 
 Vue.config.productionTip = false;
 

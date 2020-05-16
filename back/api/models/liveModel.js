@@ -11,8 +11,9 @@ const LiveModelSchema = new Schema({
         type: String,
         required: 'please enter the post title'
     },
-    artist_id: {
-        type: Number,
+    artist: {
+        type: Schema.Types.ObjectId,
+        ref: "Artist",
         required: 'artist required'
     },
     /**
@@ -57,4 +58,4 @@ const LiveModelSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('LiveModel', LiveModelSchema);
+module.exports = mongoose.model('Live', LiveModelSchema);

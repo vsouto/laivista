@@ -5,6 +5,7 @@
         <router-view></router-view>
       </transition>
     </component>
+    <notifications group="foo" />
   </div>
 </template>
 
@@ -22,4 +23,5 @@
 
 <style lang="scss">
   @import "assets/base.scss";
+  /*@import "assets/pro.css";*/
 </style>

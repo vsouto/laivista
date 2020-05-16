@@ -3,7 +3,7 @@ import * as actions from "./actions"
 import * as getters from "./getters"
 
 const state = {
-  storeModuleDirectory: "lives",
+  storeModuleDirectory: "live",
   lives: []
 }
 
